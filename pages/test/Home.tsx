@@ -4,6 +4,16 @@ import Image from "next/image";
 import { format } from "path/posix";
 import styles from "../styles/Home.module.css";
 import React from "react";
+import {gql, useQuery} from '@apollo/client';
+
+const AllNotesQuery = gql`
+query allNotes {
+  notes {
+    title
+    content
+  }
+}
+`
 
 interface FormData {
   title: string;
@@ -18,6 +28,9 @@ const Home: NextPage = () => {
     id: "",
   };
   const [form, setForm] = React.useState<FormData>(intialState);
+
+  const{data, loading, error} = useQuery(AllNotesQuery);
+  console.log("note data", data)
 
   async function create(data: FormData){
     try {
@@ -46,6 +59,7 @@ const Home: NextPage = () => {
       console.log(error)
     }
   }
+
 
   return (
     // <div className={styles.container}>
