@@ -17,11 +17,30 @@ type Note {
     content: String
 }
 
+
+type User {
+    id: String
+    username: String
+    password: String
+    email: String
+    name: String
+}
+
 type Query
 {
     links: [Link]!,
     notes: [Note]!,
+    users: [User]!,
 
-}`;
+}
+
+type Mutation
+{
+    userRegistration(username: String!, password: String!): User!,
+    userLogin(username: String!, password: String!): User!,
+}
+
+
+`;
 
 

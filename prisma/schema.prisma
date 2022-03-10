@@ -29,3 +29,13 @@ model Link {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
+
+model User {
+    id  Int @id @default(autoincrement())
+    username String
+    password String
+    email String 
+    name String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
