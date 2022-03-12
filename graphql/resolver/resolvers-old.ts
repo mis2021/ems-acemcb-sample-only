@@ -1,12 +1,16 @@
-import { prisma } from "../lib/prisma";
-import { userResolverQr } from "./modules/users/userResolver";
+import { prisma } from "../../lib/prisma";
 const bcrypt = require("bcrypt");
 
 export const resolvers = {
   Query: {
-    links: async () => await prisma.link.findMany(),
+    // links: async () => await prisma.link.findMany(),
     notes: async () => await prisma.note.findMany(),
-    users: userResolverQr,
+    products: async () => {
+      return {
+        products: "hello",
+        desc: "hi"
+      }
+    },
   },
   Mutation: {
     userRegistration: async (root, args, context) => {

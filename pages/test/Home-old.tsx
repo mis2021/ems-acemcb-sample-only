@@ -5,6 +5,7 @@ import { format } from "path/posix";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import {gql, useQuery} from '@apollo/client';
+import {GET_NOTE_LIST} from "../constants/graphql/test/queries"
 
 const AllNotesQuery = gql`
 query allNotes {
@@ -28,6 +29,8 @@ const Home: NextPage = () => {
     id: "",
   };
   const [form, setForm] = React.useState<FormData>(intialState);
+
+  const { loading: noteListLoading, data: noteList, refetch } = useQuery(GET_NOTE_LIST);
 
   const{data, loading, error} = useQuery(AllNotesQuery);
   console.log("note data", data)
@@ -59,6 +62,8 @@ const Home: NextPage = () => {
       console.log(error)
     }
   }
+
+  console.log("noteList", noteList)
 
 
   return (

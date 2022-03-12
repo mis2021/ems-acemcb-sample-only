@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from "next-auth/react"
-import Home from "./test/Home"
+import {Home} from "./test/Home"
 
 export default function Component() {
   const { data: session } = useSession()

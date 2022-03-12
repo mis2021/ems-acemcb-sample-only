@@ -1,27 +1,9 @@
 import { ApolloServer } from "apollo-server-micro";
-import { typeDefs } from "../../graphql/schema";
-import { resolvers } from "../../graphql/resolvers";
+import { typeDefs } from "../../graphql/schema/index";
+// import { typeDefs } from "../../graphql/schema";
+import { resolvers } from "../../graphql/resolver/index";
+// import { resolvers } from "../../graphql/resolver/resolvers";
 import Cors from "micro-cors";
-
-
-import * as path from "path";
-import * as fs from "fs";
-import { makeExecutableSchema } from "@graphql-tools/schema";
-import { mergeResolvers } from "@graphql-tools/merge";
-import * as glob from "glob";
-
-
-// const pathToModules = path.join(__dirname, "../../graphql/modules");
-// const graphqlTypes = glob
-//   .sync(`${pathToModules}/**/schema.ts`)
-//   .map((x) => fs.readFileSync(x, { encoding: "utf8" }));
-
-// const resolversUn = glob
-//   .sync(`${pathToModules}/**/resolvers.ts`)
-//   .map((resolver) => require(resolver).resolvers);
-
-//   const newtypes = makeExecutableSchema({typeDefs: graphqlTypes})
-//   const newresolversUn = mergeResolvers(resolversUn)
 
 const cors = Cors();
 
